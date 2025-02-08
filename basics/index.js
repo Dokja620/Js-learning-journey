@@ -15,20 +15,25 @@ let person = [
     firstName: "Mike",
     lastName: "revana",
     gender: "female",
-    age: 25,
+    age: 15,
   },
 ];
 
-let isApproved;
+function checkAge(person) {
+  let isApproved;
+  let fullName = getFullName(person.firstName, person.lastName);
+  let age = person.age;
 
-function checkAge(age, fullName) {
-  if (age < 18) isApproved = false;
-
-  if (!isApproved) {
-    document.write(fullName + " You are old enough");
-    document.write(age + " is more than enough so CORNNNN");
+  if (age < 18) {
+    isApproved = false;
   } else {
-    document.write("Access denied, Nice try tho" + fullName);
+    isApproved = true;
+  }
+
+  if (isApproved) {
+    console.log(fullName + " You are old enough");
+  } else {
+    console.log("Access denied, Nice try tho " + fullName);
   }
 }
 
@@ -38,4 +43,4 @@ function getFullName(firstName, lastName) {
   return fullName;
 }
 
-checkAge(person.age, getFullName(person.firstName, person.lastName));
+person.forEach(checkAge);
